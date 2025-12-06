@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upstock IT Institute - Admission Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans Bengali', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        .form-content {
+            padding: 40px 30px;
+        }
+        
+        .section-title {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 30px 0 20px 0;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .section-title:first-child {
+            margin-top: 0;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1f2937;
+            font-size: 15px;
+        }
+        
+        .required {
+            color: #ef4444;
+            margin-left: 4px;
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="date"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Noto Sans Bengali', Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .radio-option,
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .radio-option:hover,
+        .checkbox-option:hover {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+        
+        .radio-option input[type="radio"],
+        .checkbox-option input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            cursor: pointer;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .info-box h3 {
+            color: #92400e;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .info-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .info-box ul li {
+            color: #78350f;
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .info-box ul li:before {
+            content: "•";
+            position: absolute;
+            left: 8px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .agreement-box {
+            background: #f0fdf4;
+            border: 2px solid #86efac;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .agreement-box h3 {
+            color: #166534;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .agreement-content {
+            color: #14532d;
+            line-height: 1.8;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .agreement-content p {
+            margin-bottom: 12px;
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+        }
+        
+        .submit-button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+        }
+        
+        .submit-button:active {
+            transform: translateY(0);
+        }
+        
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .success-message {
+            display: none;
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .error-message {
+            display: none;
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 0;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .form-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Upstock IT Institute</h1>
+            <p>ফরেক্স ও মার্কেট ইনভেস্টিং ট্রেনিং - ভর্তি ফর্ম</p>
+        </div>
+        
+        <div class="form-content">
+            <form id="admissionForm">
+                <!-- Section 1: Student Information -->
+                <div class="section-title">📋 স্টুডেন্ট তথ্য</div>
+                
+                <div class="form-group">
+                    <label>সম্পূর্ণ নাম <span class="required">*</span></label>
+                    <input type="text" name="fullName" required placeholder="আপনার সম্পূর্ণ নাম লিখুন">
+                </div>
+                
+                <div class="form-group">
+                    <label>পিতা/মাতার নাম <span class="required">*</span></label>
+                    <input type="text" name="parentName" required placeholder="পিতা/মাতার সম্পূর্ণ নাম">
+                </div>
+                
+                <div class="form-group">
+                    <label>মোবাইল নাম্বার <span class="required">*</span></label>
+                    <input type="tel" name="mobile" required placeholder="01XXXXXXXXX" pattern="01[3-9][0-9]{8}">
+                </div>
+                
+                <div class="form-group">
+                    <label>ইমেইল ঠিকানা <span class="required">*</span></label>
+                    <input type="email" name="email" required placeholder="example@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label>জাতীয় পরিচয়পত্র (NID) নাম্বার <span class="required">*</span></label>
+                    <input type="text" name="nid" required placeholder="NID নাম্বার">
+                </div>
+                
+                <div class="form-group">
+                    <label>বর্তমান ঠিকানা <span class="required">*</span></label>
+                    <textarea name="address" required placeholder="আপনার সম্পূর্ণ ঠিকানা লিখুন"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>পেশা <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="profession" value="student" required>
+                            <span>ছাত্র/ছাত্রী</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="profession" value="job" required>
+                            <span>চাকরিজীবী</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="profession" value="freelancer" required>
+                            <span>ফ্রিল্যান্সার</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="profession" value="business" required>
+                            <span>ব্যবসায়ী</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="profession" value="housewife" required>
+                            <span>গৃহিণী</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="profession" value="other" required>
+                            <span>অন্যান্য</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>ইনস্টিটিউটের রেফারেন্স (যদি থাকে)</label>
+                    <input type="text" name="reference" placeholder="রেফারেন্সের নাম (ঐচ্ছিক)">
+                </div>
+                
+                <!-- Section 2: Course Information -->
+                <div class="section-title">📚 কোর্স তথ্য ও পেমেন্ট</div>
+                
+                <div class="form-group">
+                    <label>কোর্সের নাম <span class="required">*</span></label>
+                    <select name="course" required>
+                        <option value="forex-training">ফরেক্স ও মার্কেট ইনভেস্টিং ট্রেনিং (৪০ দিন - ৳৫,০০০)</option>
+                    </select>
+                </div>
+                
+                <div class="info-box">
+                    <h3>💰 কোর্স ফি বিস্তারিত</h3>
+                    <ul>
+                        <li><strong>মোট কোর্স ফি:</strong> ৳৫,০০০</li>
+                        <li><strong>ভর্তি ফি (এখনই):</strong> ৳১,০০০ (নন-রিফান্ডেবল)</li>
+                        <li><strong>অ্যাডভান্স পেমেন্ট:</strong> ৳০</li>
+                        <li><strong>বাকি ফি:</strong> ৳৫,০০০ (ইনকাম হওয়ার পর পরিশোধযোগ্য)</li>
+                    </ul>
+                </div>
+                
+                <div class="form-group">
+                    <label>পেমেন্ট মাধ্যম (ভর্তি ফি ৳১,০০০) <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="paymentMethod" value="cash" required>
+                            <span>নগদ (ক্যাশ)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="paymentMethod" value="bkash" required>
+                            <span>বিকাশ</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="paymentMethod" value="nagad" required>
+                            <span>নগদ (মোবাইল ব্যাংকিং)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="paymentMethod" value="bank" required>
+                            <span>ব্যাংক ট্রান্সফার</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>পেমেন্ট ট্রানজেকশন আইডি / রেফারেন্স নাম্বার <span class="required">*</span></label>
+                    <input type="text" name="transactionId" required placeholder="উদাহরণ: TXN123456789">
+                </div>
+                
+                <!-- Section 3: Agreement -->
+                <div class="section-title">📜 চুক্তি ও শর্তাবলী</div>
+                
+                <div class="agreement-box">
+                    <h3>⚖️ Student Agreement - শর্তাবলী</h3>
+                    <div class="agreement-content">
+                        <p><strong>১. কোর্স তথ্য:</strong></p>
+                        <p>• কোর্স: ফরেক্স ও মার্কেট ইনভেস্টিং ট্রেনিং<br>
+                        • সময়কাল: ৪০ দিন<br>
+                        • মোট ফি: ৳৫,০০০<br>
+                        • ভর্তি ফি: ৳১,০০০ (নন-রিফান্ডেবল)</p>
+                        
+                        <p><strong>২. শিক্ষার্থীর দায়িত্ব:</strong></p>
+                        <p>• কমপক্ষে ৯০% ক্লাসে উপস্থিত থাকতে হবে<br>
+                        • ইনস্টিটিউটের ট্রেডিং রুল ও রিস্ক ম্যানেজমেন্ট মেনে চলতে হবে<br>
+                        • প্রতিদিন ট্রেডিং জার্নাল সাবমিট করতে হবে<br>
+                        • নিয়মিত পারফরম্যান্স রিপোর্ট জমা দিতে হবে</p>
+                        
+                        <p><strong>৩. পেমেন্ট নীতি:</strong></p>
+                        <p>• প্রফিট হলে ৫ কর্মদিবসের মধ্যে বাকি ফি পরিশোধ করতে হবে<br>
+                        • ইনস্টিটিউট চাইলে বাকি ফি কিস্তিতে নিতে পারবে</p>
+                        
+                        <p><strong>৪. Profit Guarantee Policy:</strong></p>
+                        <p>• সব নিয়ম মেনে চললে Refund প্রযোজ্য হবে<br>
+                        • কোর্স সমাপ্তির ৬০ দিনের মধ্যে আবেদন করতে হবে<br>
+                        • ট্রেডিং জার্নাল যাচাই ব্যতীত রিফান্ড হবে না</p>
+                        
+                        <p><strong>৫. নিষিদ্ধ কার্যক্রম:</strong></p>
+                        <p>• কোর্সের কন্টেন্ট কপি বা শেয়ার করা সম্পূর্ণ নিষিদ্ধ<br>
+                        • অনৈতিক ট্রেড বা ভুয়া রিপোর্ট জমা দিলে রিফান্ড বাতিল হবে<br>
+                        • তৃতীয় পক্ষের সিগন্যাল ব্যবহার করা যাবে না</p>
+                        
+                        <p><strong>৬. আইনি বিষয়:</strong></p>
+                        <p>এই চুক্তি বাংলাদেশ সরকারের প্রচলিত আইন অনুযায়ী কার্যকর থাকবে।</p>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="agreement" required>
+                            <span><strong>হ্যাঁ, আমি সম্পূর্ণ চুক্তি পড়েছি এবং সকল শর্তাবলী মেনে নিতে সম্মত</strong> <span class="required">*</span></span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>ডিজিটাল স্বাক্ষর (আপনার সম্পূর্ণ নাম টাইপ করুন) <span class="required">*</span></label>
+                    <input type="text" name="signature" required placeholder="আপনার সম্পূর্ণ নাম">
+                </div>
+                
+                <div class="form-group">
+                    <label>তারিখ <span class="required">*</span></label>
+                    <input type="date" name="date" required>
+                </div>
+                
+                <button type="submit" class="submit-button" id="submitBtn">
+                    ✅ সাবমিট করুন
+                </button>
+                
+                <div class="loading-spinner" id="loadingSpinner">
+                    <div class="spinner"></div>
+                    <p style="margin-top: 10px; color: #6b7280;">অনুগ্রহ করে অপেক্ষা করুন...</p>
+                </div>
+                
+                <div class="success-message" id="successMessage">
+                    ✅ ধন্যবাদ! আপনার ভর্তি আবেদন সফলভাবে জমা হয়েছে।<br>
+                    আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।<br>
+                    📞 যোগাযোগ: 01XXXXXXXXX
+                </div>
+                
+                <div class="error-message" id="errorMessage">
+                    ❌ দুঃখিত! কিছু সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Set today's date as default
+        document.querySelector('input[name="date"]').valueAsDate = new Date();
+        
+        // Google Apps Script Web App URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-jJ6isFBlq1_XgrQzO5ONfk-bAdojuAYRvSLjFvPvWbzjo023wl_pfZKrmBUhGRW1/exec';
+        
+        // Form submission handling
+        document.getElementById('admissionForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Hide previous messages
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
+            
+            // Show loading spinner
+            document.getElementById('loadingSpinner').style.display = 'block';
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('submitBtn').textContent = 'সাবমিট হচ্ছে...';
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            try {
+                // Send data to Google Sheets
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                // Hide loading spinner
+                document.getElementById('loadingSpinner').style.display = 'none';
+                
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Scroll to success message
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                
+                // Reset form
+                this.reset();
+                document.querySelector('input[name="date"]').valueAsDate = new Date();
+                
+                // Re-enable submit button
+                document.getElementById('submitBtn').disabled = false;
+                document.getElementById('submitBtn').textContent = '✅ সাবমিট করুন';
+                
+            } catch (error) {
+                console.error('Error:', error);
+                
+                // Hide loading spinner
+                document.getElementById('loadingSpinner').style.display = 'none';
+                
+                // Show error message
+                document.getElementById('errorMessage').style.display = 'block';
+                
+                // Re-enable submit button
+                document.getElementById('submitBtn').disabled = false;
+                document.getElementById('submitBtn').textContent = '✅ সাবমিট করুন';
+            }
+        });
+    </script>
+</body>
+</html>
